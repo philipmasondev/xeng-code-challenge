@@ -34,19 +34,7 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 	data := make(map[string]interface{})
 
-	resp, err := http.Get("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	text, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	data["apiReponse"] = string(text)
+	data["apiReponse"] = apiResponse("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
 
 	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{
 		Data: data,
@@ -63,4 +51,15 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
 	})
+}
+
+// apiResponse return api response from provided url
+func apiResponse(url string) string {
+	resp, err := http.Get(url)
+
+	text, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return string(text)
 }
