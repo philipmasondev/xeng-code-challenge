@@ -1,0 +1,3 @@
+create_table("recipes") {
+    t.Column("data", "jsonb", {})
+}
