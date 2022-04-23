@@ -5,8 +5,11 @@ import (
 	"io/ioutil"
 	"net/http"
 	"web-application-template/pkg/config"
+	"web-application-template/pkg/driver"
 	"web-application-template/pkg/models"
 	"web-application-template/pkg/render"
+	"web-application-template/pkg/repository"
+	"web-application-template/pkg/repository/dbrepo"
 )
 
 // Repo the repository used by the handlers
@@ -15,12 +18,14 @@ var Repo *Repository
 // Repository is the repository type
 type Repository struct {
 	App *config.AppConfig
+	DB  repository.DatabaseRepo
 }
 
 // NewRepo creates a new repository
-func NewRepo(a *config.AppConfig) *Repository {
+func NewRepo(a *config.AppConfig, db *driver.DB) *Repository {
 	return &Repository{
 		App: a,
+		DB:  dbrepo.NewPostgresDBRepo(db.SQL, a),
 	}
 }
 

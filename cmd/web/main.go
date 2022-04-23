@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"web-application-template/pkg/config"
+	"web-application-template/pkg/driver"
 	"web-application-template/pkg/handlers"
 	"web-application-template/pkg/render"
 )
@@ -23,8 +24,14 @@ func main() {
 	app.TemplateCache = tc
 	app.UseCache = false
 
-	repo := handlers.NewRepo(&app)
-	handlers.NewHandlers(repo)
+	// connect to db
+	log.Println("connecting to db")
+	db, err := driver.ConnectSQL("host=127.0.0.1 port=5432 dbname=postgres user=postgres password=0O9i8u7y6t5r4e3w@q1")
+	if err != nil {
+		log.Fatal("Cannot connect to database!")
+	}
+
+	defer db.SQL.Close()
 
 	render.NewTemplates(&app)
 
@@ -33,4 +40,8 @@ func main() {
 
 	fmt.Println(fmt.Sprintf("Staring application on port %s", portNumber))
 	_ = http.ListenAndServe(portNumber, nil)
+
+	repo := handlers.NewRepo(&app, db)
+	handlers.NewHandlers(repo)
+	render.NewTemplates(&app)
 }
