@@ -1,67 +1,114 @@
 {{define "base"}}
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Get The Meal Recipies</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-              integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-              crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xeng Coding Challenge</title>
 
-        {{block "css" .}}
+    {{block "css" .}}
 
-        {{end}}
-    </head>
-    <body>
-        <!-- example navbar from https://getbootstrap.com/docs/5.1/components/navbar/ -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    {{end}}
+
+</head>
+<body style="padding-top: 120px;">
+    <div class="container-fluid fixed-top">
+        <!-- Logo and service name bar -->
+        <div class="row text-white p-2 pt-3" style="background-color: #001433;">
+            <ul class="list-inline">
+                <!-- <li class="list-inline-item">
+                    <a href="/"><img src="/data/images/logo_barracuda_primary_reversed.svg" style="width: 150px;"></a>
+                </li> -->
+                <li class="list-inline-item fs-4 align-bottom" 
+                    style="transform: translate(0px, 5px);"><!--TODO: add logo here --></li>
+                <li class="list-inline-item fs-4 align-bottom" 
+                    style="transform: translate(0px, 7px);">Xeng Coding Challenge</li>
+            </ul>
+            
+        </div>
+        <!-- Beginning of Navbar -->
+        <div class="row bg-secondary">
+            <nav class="navbar navbar-expand-md shadow navbar-dark text-white">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/search">Search Recipies</a>
+                        </li>
                     </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-          </nav>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- End of navbar -->
+    <!-- Load content of visited template file -->
+    <div class="p-3 bg-light" style="min-height: 90vh;">
     {{block "content" .}}
 
     {{end}}
 
-
     {{block "js" .}}
 
     {{end}}
+    </div>
+    <!-- end of tmeplate content -->
+    <!-- footer -->
+    <div class="container-fluid position-static bottom text-white p-2" 
+        style="background-color: #001433;">
+        <div class="row text-center m-5 max-width-75%">
+            <div class="col">
+                <!--empty colum -->
+            </div>
+            <div class="col">
+                <p>Column 1</p>
+            </div>
+            <div class="col">
+                <p>Column 2</p>
+            </div>
+            <div class="col">
+                <p>Column 3</p>
+            </div>
+            <div class="col">
+                <p>Column 4</p>
+            </div>
+            <div class="col">
+                <!-- empty column -->
+            </div>
+        </div>
+    </div>
+    <!-- info bar-->
+    <div class="container-fluid fixed-bottom p-0 bg-white">
+        <div class="row bg-white border">
+            <div class="col">
+                <ul class="list-group list-group-horizontal p-0 border-0">
+                    <li class="list-group-item border-0">
+                        <div class="fs-6">&copy; 2021 Brands, Inc. All rights reserved.</div>
+                    </li>
+                    <li class="list-group-item border-0">
+                        <a class="limk fs-6" href="/terms-of-service" 
+                            style="text-decoration: none;">Terms of Service</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{{end}}
 
-    </body>
-    </html>
+{{define "js"}}
+
 {{end}}

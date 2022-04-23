@@ -1,12 +1,36 @@
+<!-- base.layout.tmpl -->
 {{template "base" .}}
 
-<div class="container-fluid"
-
+<!-- defining home.page.tmpl content -->
 {{define "content"}}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <p>{{.}}</p>
-            </div>
+
+<!-- Page header -->
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-5">Meal Recipies</h1>
+        </div>
     </div>
+</div><!-- END of header -->
+
+<!-- Line on page -->
+<div class="border"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <!-- Form -->
+            <div class="mt-5">By clicking the following button the recipies database will be updated with meal recipies from TheMealDB API.</div>
+
+            <!-- {{$res := index .Data "reservation"}} -->
+
+            <form method="post" action="" class="" novalidate>
+                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                <button type="submit" class="btn btn-primary" value="Make Reservation">Update Database</button>
+            </form>
+        </div>
+    </div>
+
+</div>
 {{end}}

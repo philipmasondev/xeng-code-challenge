@@ -41,6 +41,18 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// PostHome is the handler for the home page
+func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
+
+	data := make(map[string]interface{})
+
+	data["apiReponse"] = apiResponse("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
+
+	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{
+		Data: data,
+	})
+}
+
 // About is the handler for the about page
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	// perform some logic
