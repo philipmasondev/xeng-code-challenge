@@ -12,8 +12,7 @@ import (
 const portNumber = ":8080"
 
 // main is the main function
-func main() {
-	var app config.AppConfig
+var app config.AppConfig
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {

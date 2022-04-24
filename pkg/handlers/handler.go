@@ -41,15 +41,31 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// About is the handler for the about page
-func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	// perform some logic
-	stringMap := make(map[string]string)
-	stringMap["test"] = "Hello, again"
+// PostHome is the handler for the home page
+func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 
-	// send data to the template
-	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
-		StringMap: stringMap,
+	data := make(map[string]interface{})
+
+	data["apiReponse"] = apiResponse("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
+
+	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{
+		Data: data,
+	})
+}
+
+// PostSearch is the handler to serve the search page
+func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
+
+	render.RenderTemplate(w, "search.page.tmpl", &models.TemplateData{
+		//
+	})
+}
+
+// Search is the handler to serve the search page after POST
+func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
+
+	render.RenderTemplate(w, "search.page.tmpl", &models.TemplateData{
+		//
 	})
 }
 
