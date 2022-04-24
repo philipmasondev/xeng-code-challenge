@@ -1,6 +1,6 @@
 development:
   dialect: postgres
-  database: postgres
+  database: xeng-coding-challenge
   user: postgres
   password: 0O9i8u7y6t5r4e3w@q1
   host: 127.0.0.1

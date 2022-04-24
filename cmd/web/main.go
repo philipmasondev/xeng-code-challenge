@@ -27,7 +27,7 @@ var errorLog *log.Logger
 func main() {
 	db, err := run()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Error at main, connecting to db.", err)
 	}
 	defer db.SQL.Close()
 
@@ -39,12 +39,13 @@ func main() {
 	}
 
 	err = srv.ListenAndServe()
-	log.Fatal(err)
+	log.Fatal("Error at srv.ListenAndServe.", err)
+	fmt.Println("Error at srv.ListenAndServe.", err)
 }
 
 func run() (*driver.DB, error) {
 	// what am I going to put in the session
-	gob.Register(models.RecipiesJSON{})
+	gob.Register(models.RecipesJSON{})
 
 	// change this to true when in production
 	app.InProduction = false
@@ -65,7 +66,7 @@ func run() (*driver.DB, error) {
 
 	// connect to database
 	log.Println("Connecting to database...")
-	db, err := driver.ConnectSQL("host=localhost port=5432 dbname=postgres user=postgres password=0O9i8u7y6t5r4e3w@q1")
+	db, err := driver.ConnectSQL("host=localhost port=5432 dbname=xeng-coding-challenge user=postgres password=0O9i8u7y6t5r4e3w@q1")
 	if err != nil {
 		log.Fatal("Cannot connect to database.")
 	}

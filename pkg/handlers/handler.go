@@ -50,18 +50,14 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 	data["apiResponse"] = apiJsonString
 	data["test"] = "test"
 
-	apiForDB := models.RecipiesJSON{
-		RecipeJsonString: apiJsonString,
-	}
-
-	err := m.DB.InsertRecipiesToDB(apiForDB)
+	err := m.DB.InsertRecipesToDB(apiJsonString)
 	if err != nil {
-		fmt.Println("issue with db insert in PostHome handler", err)
+		fmt.Println("Issue with db insert in PostHome handler: Error -", err)
 	}
 
-	m.App.Session.Put(r.Context(), "apiForDb", apiForDB)
-
-	http.Redirect(w, r, "/home", http.StatusSeeOther)
+	render.Template(w, r, "home.page.tmpl", &models.TemplateData{
+		Data: data,
+	})
 }
 
 // PostSearch is the handler to serve the search page
@@ -84,12 +80,12 @@ func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
 func apiResponse(url string) string {
 	resp, err := http.Get(url)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error at apiResponse. Error - ", err)
 	}
 
 	text, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error at apiResponse. Error - ", err)
 	}
 	return string(text)
 }

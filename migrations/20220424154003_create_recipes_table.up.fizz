@@ -1,0 +1,4 @@
+create_table("recipes") {
+    t.Column("id", "int", {primary: true})
+    t.Column("recipe", "jsonb", {})
+}
