@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"web-application-template/pkg/config"
+	"web-application-template/pkg/driver"
 	"web-application-template/pkg/handlers"
 	"web-application-template/pkg/render"
 )
@@ -12,7 +13,8 @@ import (
 const portNumber = ":8080"
 
 // main is the main function
-var app config.AppConfig
+func main() {
+	var app config.AppConfig
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
