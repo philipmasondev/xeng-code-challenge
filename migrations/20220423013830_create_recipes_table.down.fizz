@@ -1,1 +1,1 @@
-sql("drop table recipe")
+sql("drop table recipes")
