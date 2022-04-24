@@ -66,7 +66,9 @@ func run() (*driver.DB, error) {
 
 	// connect to database
 	log.Println("Connecting to database...")
+
 	db, err := driver.ConnectSQL("host=localhost port=5432 dbname=xeng-coding-challenge user=postgres password=0O9i8u7y6t5r4e3w@q1")
+
 	if err != nil {
 		log.Fatal("Cannot connect to database.")
 	}
