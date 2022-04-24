@@ -1,9 +1,8 @@
 package dbrepo
 
 import (
-	"context"
+	"fmt"
 	"time"
-	"web-application-template/pkg/models"
 )
 
 func (m *postgresDBRepo) AllUsers() bool {
@@ -11,22 +10,18 @@ func (m *postgresDBRepo) AllUsers() bool {
 }
 
 // InsetRecipiesToDB inserts recipies to recipe table.
-func (m *postgresDBRepo) InsertRecipiesToDB(recipe models.RecipiesJSON) error {
+func (m *postgresDBRepo) InsertRecipesToDB(recipeJSON string) error {
 
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
-	defer cancel()
+	createdAt := time.Now()
+	updatedAt := time.Now()
+	sqlStatment := `insert into recipes (recipe, created_at, updated_at)
+		values ($1, $2, $3)`
 
-	InsStatment := `insert into recipies (recipe)
-		values ($1)`
-
-	_, err := m.DB.ExecContext(ctx, InsStatment,
-		recipe.RecipeJsonString,
-		time.Now(),
-		time.Now(),
-	)
+	_, err := m.DB.Exec(sqlStatment, recipeJSON, createdAt, updatedAt)
 
 	if err != nil {
-		return err
+		fmt.Println("error in m.DB.ExecContext. Error - ", err)
+
 	}
 
 	return nil

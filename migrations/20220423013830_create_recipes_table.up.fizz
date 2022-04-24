@@ -1,5 +1,0 @@
-create_table("recipe") {
-    t.Column("id", "int", {})
-    t.Column("recipe", "jsonb", {})
-}
-

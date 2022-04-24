@@ -3,12 +3,12 @@ package models
 import "time"
 
 // RecipiesJSON holds the json string to try to use jsonb
-type RecipiesJSON struct {
+type RecipesJSON struct {
 	RecipeJsonString string
 }
 
 // Recipies defines the recipie data to be used from db and api
-type Recipies struct {
+type Recipes struct {
 	MealID                   string
 	MealName                 string
 	Drink                    string
