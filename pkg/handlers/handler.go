@@ -53,15 +53,19 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// About is the handler for the about page
-func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	// perform some logic
-	stringMap := make(map[string]string)
-	stringMap["test"] = "Hello, again"
+// PostSearch is the handler to serve the search page
+func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
-	// send data to the template
-	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
-		StringMap: stringMap,
+	render.RenderTemplate(w, "search.page.tmpl", &models.TemplateData{
+		//
+	})
+}
+
+// Search is the handler to serve the search page after POST
+func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
+
+	render.RenderTemplate(w, "search.page.tmpl", &models.TemplateData{
+		//
 	})
 }
 
