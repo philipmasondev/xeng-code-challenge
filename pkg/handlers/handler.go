@@ -45,6 +45,9 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 
 	data := make(map[string]interface{})
 
+	/* TODO:
+	add option for user to specify the url to be able to grab more than just the one meal recipie.
+	*/
 	apiJsonString := apiResponse("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
 
 	data["apiResponse"] = apiJsonString
