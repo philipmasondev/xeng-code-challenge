@@ -5,9 +5,11 @@ import (
 	"io/ioutil"
 	"net/http"
 	"web-application-template/pkg/config"
+	"web-application-template/pkg/driver"
 	"web-application-template/pkg/models"
 	"web-application-template/pkg/render"
 	"web-application-template/pkg/repository"
+	"web-application-template/pkg/repository/dbrepo"
 )
 
 // Repo the repository used by the handlers
@@ -20,9 +22,10 @@ type Repository struct {
 }
 
 // NewRepo creates a new repository
-func NewRepo(a *config.AppConfig) *Repository {
+func NewRepo(a *config.AppConfig, db *driver.DB) *Repository {
 	return &Repository{
 		App: a,
+		DB:  dbrepo.NewPostgresRepo(db.SQL, a),
 	}
 }
 
@@ -34,11 +37,7 @@ func NewHandlers(r *Repository) {
 // Home is the handler for the home page
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
-	data := make(map[string]interface{})
-
-	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{
-		Data: data,
-	})
+	render.Template(w, r, "home.page.tmpl", &models.TemplateData{})
 }
 
 // PostHome is the handler for the home page
@@ -68,7 +67,7 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 // PostSearch is the handler to serve the search page
 func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
-	render.RenderTemplate(w, "search.page.tmpl", &models.TemplateData{
+	render.Template(w, r, "search.page.tmpl", &models.TemplateData{
 		//
 	})
 }
@@ -76,7 +75,7 @@ func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 // Search is the handler to serve the search page after POST
 func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
 
-	render.RenderTemplate(w, "search.page.tmpl", &models.TemplateData{
+	render.Template(w, r, "search.page.tmpl", &models.TemplateData{
 		//
 	})
 }
