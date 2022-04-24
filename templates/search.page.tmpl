@@ -1,0 +1,47 @@
+<!-- base.layout.tmpl -->
+{{template "base" .}}
+
+<!-- defining home.page.tmpl content -->
+{{define "content"}}
+
+<!-- Page header -->
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-5">Meal Recipies</h1>
+        </div>
+    </div>
+</div><!-- END of header -->
+
+<!-- Line on page -->
+<div class="border"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+            
+            <div class="mt-5">Search page</div>
+
+            <hr>
+
+            <!-- Form -->
+            <form method="post" action="/" class="" novalidate>
+                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                <button type="submit" class="btn btn-primary" value="Make Reservation">Update Database</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+{{$string := index .Data "post"}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <p>This is the message passed in by post. {{$string}}</p>
+        </div>
+    </div>
+
+</div>
+{{end}}

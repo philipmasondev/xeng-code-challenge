@@ -16,21 +16,36 @@
 <!-- Line on page -->
 <div class="border"></div>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
 
-            <!-- Form -->
+            
             <div class="mt-5">By clicking the following button the recipies database will be updated with meal recipies from TheMealDB API.</div>
 
-            <!-- {{$res := index .Data "reservation"}} -->
+            <hr>
 
-            <form method="post" action="" class="" novalidate>
-                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
-                <button type="submit" class="btn btn-primary" value="Make Reservation">Update Database</button>
+            <!-- Form -->
+            <form action="/" method="POST" class="" novalidate>
+                
+                <input type="submit" class="btn btn-primary" value="Insert Json">
             </form>
+
         </div>
     </div>
 
 </div>
+{{$string := index .Data "post"}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <p>This is the message passed in by post. {{$string}}</p>
+        </div>
+    </div>
+
+</div>
+
+{{range .Data}}
+{{.}}
+{{end}}
 {{end}}
