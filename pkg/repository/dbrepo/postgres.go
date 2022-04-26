@@ -56,7 +56,7 @@ func (m *postgresDBRepo) InsertRecipe(rec string) error {
 	// 			$36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52, $53)`
 
 	// _, err := m.DB.Exec(sqlStatment,
-	// 	r.Meals
+	// 	r.StrMeal,
 	// 	r.StrDrinkAlternate,
 	// 	r.StrCategory,
 	// 	r.StrArea,
