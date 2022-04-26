@@ -40,6 +40,11 @@ func (m *postgresDBRepo) InsertRecipesToDB(recipeJSON string) error {
 // InsertRecipe will update recipesNonJson table
 func (m *postgresDBRepo) InsertRecipe(rec string) error {
 
+<<<<<<< HEAD
+=======
+	fmt.Println("this is rec", rec, "\n")
+
+>>>>>>> 29e31f792293455a169f30fdba11d417a4a11970
 	r := models.MealsJSON{}
 
 	json.Unmarshal([]byte(rec), &r)
