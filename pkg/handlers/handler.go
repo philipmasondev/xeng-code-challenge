@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -48,14 +49,14 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 	/* TODO:
 	add option for user to specify the url to be able to grab more than just the one meal recipie.
 	*/
+
 	apiJsonString := apiResponse("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
 
-	data["apiResponse"] = apiJsonString
-	data["test"] = "test"
-
-	err := m.DB.InsertRecipesToDB(apiJsonString)
-	if err != nil {
-		fmt.Println("Issue with db insert in PostHome handler: Error -", err)
+	if json.Valid([]byte(apiJsonString)) {
+		errInsert := m.DB.InsertRecipe(apiJsonString)
+		if errInsert != nil {
+			fmt.Println("Error at InsertRecipe with ", errInsert)
+		}
 	}
 
 	render.Template(w, r, "home.page.tmpl", &models.TemplateData{

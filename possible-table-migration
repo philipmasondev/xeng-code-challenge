@@ -1,52 +1,57 @@
-t.Column("id", "integer", {primary: true})
-    t.Column("meal", "string", {})
-    t.Column("strDrinkAlternate", "string",{})
-    t.Column("Category", "string", {})
-    t.Column("Area", "string", {})
-    t.Column("instructions", "string", {})
-    t.Column("MealThumd", "string", {})
-	t.Column("Tags", "string", {})			
-	t.Column("Youtube", "string", {})
-	t.Column("Ingredient1", "string", {})
-    t.Column("Ingredient2", "string", {})
-    t.Column("Ingredient3", "string", {})
-    t.Column("Ingredient4", "string", {})
-    t.Column("Ingredient5", "string", {})
-    t.Column("Ingredient6", "string", {})
-    t.Column("Ingredient7", "string", {})
-    t.Column("Ingredient8", "string", {})
-    t.Column("Ingredient9", "string", {})
-    t.Column("Ingredient10", "string", {})
-    t.Column("Ingredient11", "string", {})
-    t.Column("Ingredient12", "string", {})
-    t.Column("Ingredient13", "string", {})
-    t.Column("Ingredient14", "string", {})
-    t.Column("Ingredient15", "string", {})
-    t.Column("Ingredient16", "string", {})
-    t.Column("Ingredient17", "string", {})
-    t.Column("Ingredient18", "string", {})
-    t.Column("Ingredient19", "string", {})
-    t.Column("Ingredient20", "string", {})
-    t.Column("Measure1", "string", {})
-    t.Column("Measure2", "string", {})
-    t.Column("Measure3", "string", {})
-    t.Column("Measure4", "string", {})
-    t.Column("Measure5", "string", {})
-    t.Column("Measure6", "string", {})
-    t.Column("Measure7", "string", {})
-    t.Column("Measure8", "string", {})
-    t.Column("Measure9", "string", {})
-    t.Column("Measure10", "string", {})
-    t.Column("Measure11", "string", {})
-    t.Column("Measure12", "string", {})
-    t.Column("Measure13", "string", {})
-    t.Column("Measure14", "string", {})
-    t.Column("Measure15", "string", {})
-    t.Column("Measure16", "string", {})
-    t.Column("Measure17", "string", {})
-    t.Column("Measure18", "string", {})
-    t.Column("Measure19", "string", {})
-    t.Column("Measure20", "string", {})
-    t.Column("Source", "string", {})
-    t.Column("ImageSource", "string", {})
-    t.Column("CreativeCommonsConfirmed", "string", {})
+
+    meal, strDrinkAlternate, Category, Area, instructions, MealThumd, Tags, Youtube, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7, Ingredient8, Ingredient9, 
+    Ingredient10, Ingredient11, Ingredient12, Ingredient13, Ingredient14, Ingredient15, Ingredient16, Ingredient17, Ingredient18, Ingredient19, Ingredient20, Measure1, Measure2, Measure3, 
+    Measure4, Measure5, Measure6, Measure7, Measure8, Measure9, Measure10, Measure11, Measure12, Measure13, Measure14, Measure15, Measure16, Measure17, Measure18, Measure19, Measure20, Source, ImageSource, CreativeCommonsConfirmed, 
+
+    MealName                 
+	Drink                    
+	Category                 
+	Area                     
+	Instructions             
+	MealThumbnail            
+	Tags                     
+	Youtube                  
+	Ingredient1              
+	Ingredient2              
+	Ingredient3              
+	Ingredient4              
+	Ingredient5              
+	Ingredient6              
+	Ingredient7              
+	Ingredient8              
+	Ingredient9              
+	Ingredient10             
+	Ingredient11             
+	Ingredient12             
+	Ingredient13             
+	Ingredient14             
+	Ingredient15             
+	Ingredient16             
+	Ingredient17             
+	Ingredient18             
+	Ingredient19             
+	Ingredient20             
+	Measure1                 
+	Measure2                 
+	Measure3                 
+	Measure4                 
+	Measure5                 
+	Measure6                 
+	Measure7                 
+	Measure8                 
+	Measure9                 
+	Measure10                
+	Measure11                
+	Measure12                
+	Measure13                
+	Measure14                
+	Measure15                
+	Measure16                
+	Measure17                
+	Measure18                
+	Measure19                
+	Measure20                
+	Source                   
+	ImageSource              
+	CreativeCommonsConfirmed 
+	Modified                 time.Time

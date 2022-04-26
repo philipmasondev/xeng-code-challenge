@@ -1,65 +1,67 @@
 package models
 
-import "time"
-
-// RecipiesJSON holds the json string to try to use jsonb
-type RecipesJSON struct {
-	RecipeJsonString string
-}
+import (
+	"time"
+)
 
 // Recipies defines the recipie data to be used from db and api
 type Recipes struct {
-	MealID                   string
-	MealName                 string
-	Drink                    string
-	Category                 string
-	Area                     string
-	Instructions             string
-	MealThumbnail            string
-	Tags                     string
-	Youtube                  string
-	Ingredient1              string
-	Ingredient2              string
-	Ingredient3              string
-	Ingredient4              string
-	Ingredient5              string
-	Ingredient6              string
-	Ingredient7              string
-	Ingredient8              string
-	Ingredient9              string
-	Ingredient10             string
-	Ingredient11             string
-	Ingredient12             string
-	Ingredient13             string
-	Ingredient14             string
-	Ingredient15             string
-	Ingredient16             string
-	Ingredient17             string
-	Ingredient18             string
-	Ingredient19             string
-	Ingredient20             string
-	Measure1                 string
-	Measure2                 string
-	Measure3                 string
-	Measure4                 string
-	Measure5                 string
-	Measure6                 string
-	Measure7                 string
-	Measure8                 string
-	Measure9                 string
-	Measure10                string
-	Measure11                string
-	Measure12                string
-	Measure13                string
-	Measure14                string
-	Measure15                string
-	Measure16                string
-	Measure17                string
-	Measure18                string
-	Measure19                string
-	Measure20                string
-	Source                   string
-	ImageSource              string
-	CreativeCommonsConfirmed string
-	Modified                 time.Time
+	IdMeal                      int
+	StrMeal                     string `json:"StrMeal"`
+	StrDrinkAlternate           string
+	StrCategory                 string
+	StrArea                     string
+	StrInstructions             string
+	StrMealThumb                string
+	StrTags                     string
+	StrYoutube                  string
+	Strngredient1               string
+	Strngredient2               string
+	Strngredient3               string
+	Strngredient4               string
+	Strngredient5               string
+	Strngredient6               string
+	Strngredient7               string
+	Strngredient8               string
+	Strngredient9               string
+	Strngredient10              string
+	Strngredient11              string
+	Strngredient12              string
+	Strngredient13              string
+	Strngredient14              string
+	Strngredient15              string
+	Strngredient16              string
+	Strngredient17              string
+	Strngredient18              string
+	Strngredient19              string
+	Strngredient20              string
+	StrMeasure1                 string
+	StrMeasure2                 string
+	StrMeasure3                 string
+	StrMeasure4                 string
+	StrMeasure5                 string
+	StrMeasure6                 string
+	StrMeasure7                 string
+	StrMeasure8                 string
+	StrMeasure9                 string
+	StrMeasure10                string
+	StrMeasure11                string
+	StrMeasure12                string
+	StrMeasure13                string
+	StrMeasure14                string
+	StrMeasure15                string
+	StrMeasure16                string
+	StrMeasure17                string
+	StrMeasure18                string
+	StrMeasure19                string
+	StrMeasure20                string
+	StrSource                   string
+	StrImageSource              string
+	StrCreativeCommonsConfirmed string
+	DateCreated                 time.Time
+	DateModified                time.Time
+}
+
+type Recipesslice struct {
+	Meals []Recipes
 }

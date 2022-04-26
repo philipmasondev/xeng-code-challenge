@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,7 +9,6 @@ import (
 	"web-application-template/pkg/config"
 	"web-application-template/pkg/driver"
 	"web-application-template/pkg/handlers"
-	"web-application-template/pkg/models"
 	"web-application-template/pkg/render"
 
 	"github.com/alexedwards/scs/v2"
@@ -44,9 +42,6 @@ func main() {
 }
 
 func run() (*driver.DB, error) {
-	// what am I going to put in the session
-	gob.Register(models.RecipesJSON{})
-
 	// change this to true when in production
 	app.InProduction = false
 
