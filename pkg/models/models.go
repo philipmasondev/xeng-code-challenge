@@ -1,9 +1,5 @@
 package models
 
-// type Recipesslice struct {
-// 	Meals []Meals `json:"meals"`
-// }
-
 // Recipies defines the recipie data to be used from db and api
 type MealsJSON struct {
 	Meals []struct {

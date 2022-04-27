@@ -11,31 +11,14 @@ func (m *postgresDBRepo) AllUsers() bool {
 	return true
 }
 
-// InsetRecipiesToDB inserts recipies to recipe table.
-func (m *postgresDBRepo) InsertRecipesToDB(recipeJSON string) error {
+/**********************************************************************************************
+	TODO:
+	www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast
 
-	// auto fill created and update times for db columns
-	createdAt := time.Now()
-	updatedAt := time.Now()
+	This API response does not fit into the current format for the table. Need to expand the
+	ability for updating table with multiple objectes in JSON string.
 
-	//sqlQuery := `SELECT * FROM recipes WHERE recipe->>'strMeal' ? 'Arrabiata'`
-
-	//rows := m.DB.QueryRow(sqlQuery)
-	//fmt.Println(rows)
-	//if rows {
-
-	sqlStatment := `insert into recipes (recipe, created_at, updated_at)
-		values ($1, $2, $3)`
-
-	_, err := m.DB.Exec(sqlStatment, recipeJSON, createdAt, updatedAt)
-
-	if err != nil {
-		fmt.Println("error in m.DB.ExecContext. Error - ", err)
-	}
-	//}
-
-	return nil
-}
+**********************************************************************************************/
 
 // InsertRecipe will update recipesNonJson table
 func (m *postgresDBRepo) InsertRecipe(rec string) error {
@@ -110,82 +93,5 @@ func (m *postgresDBRepo) InsertRecipe(rec string) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// for i := 0; i < len(r.Meals); i++ {
-	// 	m.sqlDBUpdate(sqlStatment, r)
-	// }
-
-	// for i := 0; i < len(r.Meals); i++ {
-	// 	fmt.Println(r.Meals[i].IDMeal, r.Meals[i].StrArea)
-	// }
-
 	return nil
 }
-
-// // interate over multiple structs
-// func (m *postgresDBRepo) sqlDBUpdate(sqlQuery string, r models.MealsJSON) error {
-
-// 	var error1 error
-
-// 	for i := 0; i < len(r.Meals); i++ {
-
-// 		_, err := m.DB.Exec(sqlQuery,
-// 			r.Meals[i].IDMeal,
-// 			r.Meals[i].StrDrinkAlternate,
-// 			r.Meals[i].StrCategory,
-// 			r.Meals[i].StrArea,
-// 			r.Meals[i].StrInstructions,
-// 			r.Meals[i].StrMealThumb,
-// 			r.Meals[i].StrTags,
-// 			r.Meals[i].StrYoutube,
-// 			r.Meals[i].StrIngredient1,
-// 			r.Meals[i].StrIngredient2,
-// 			r.Meals[i].StrIngredient3,
-// 			r.Meals[i].StrIngredient4,
-// 			r.Meals[i].StrIngredient5,
-// 			r.Meals[i].StrIngredient6,
-// 			r.Meals[i].StrIngredient7,
-// 			r.Meals[i].StrIngredient8,
-// 			r.Meals[i].StrIngredient9,
-// 			r.Meals[i].StrIngredient10,
-// 			r.Meals[i].StrIngredient11,
-// 			r.Meals[i].StrIngredient12,
-// 			r.Meals[i].StrIngredient13,
-// 			r.Meals[i].StrIngredient14,
-// 			r.Meals[i].StrIngredient15,
-// 			r.Meals[i].StrIngredient16,
-// 			r.Meals[i].StrIngredient17,
-// 			r.Meals[i].StrIngredient18,
-// 			r.Meals[i].StrIngredient19,
-// 			r.Meals[i].StrIngredient20,
-// 			r.Meals[i].StrMeasure1,
-// 			r.Meals[i].StrMeasure2,
-// 			r.Meals[i].StrMeasure3,
-// 			r.Meals[i].StrMeasure4,
-// 			r.Meals[i].StrMeasure5,
-// 			r.Meals[i].StrMeasure6,
-// 			r.Meals[i].StrMeasure7,
-// 			r.Meals[i].StrMeasure8,
-// 			r.Meals[i].StrMeasure9,
-// 			r.Meals[i].StrMeasure10,
-// 			r.Meals[i].StrMeasure11,
-// 			r.Meals[i].StrMeasure12,
-// 			r.Meals[i].StrMeasure13,
-// 			r.Meals[i].StrMeasure14,
-// 			r.Meals[i].StrMeasure15,
-// 			r.Meals[i].StrMeasure16,
-// 			r.Meals[i].StrMeasure17,
-// 			r.Meals[i].StrMeasure18,
-// 			r.Meals[i].StrMeasure19,
-// 			r.Meals[i].StrMeasure20,
-// 			r.Meals[i].StrSource,
-// 			r.Meals[i].StrImageSource,
-// 			r.Meals[i].StrCreativeCommonsConfirmed,
-// 			time.Now(),
-// 			time.Now(),
-// 		)
-// 		if err != nil {
-// 			error1 = err
-// 		}
-// 	}
-// 	return error1
-// }

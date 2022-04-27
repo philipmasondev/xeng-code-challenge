@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"web-application-template/pkg/config"
 	"web-application-template/pkg/driver"
 	"web-application-template/pkg/models"
@@ -46,14 +47,20 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 
 	data := make(map[string]interface{})
 
-	/* TODO:
-	add option for user to specify the url to be able to grab more than just the one meal recipie.
-	*/
+	apiJsonString := r.FormValue("url_of_api")
 
-	apiJsonString := apiResponse("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
+	// check url format and if http:// is missing, add http:// to beginning
+	_, err := url.ParseRequestURI(apiJsonString)
+	if err != nil {
+		apiJsonString = "http://" + apiJsonString
+	}
 
-	if json.Valid([]byte(apiJsonString)) {
-		errInsert := m.DB.InsertRecipe(apiJsonString)
+	urlString := apiResponse(apiJsonString)
+
+	fmt.Println(apiJsonString)
+
+	if json.Valid([]byte(urlString)) {
+		errInsert := m.DB.InsertRecipe(urlString)
 		if errInsert != nil {
 			fmt.Println("Error at InsertRecipe with ", errInsert)
 		}

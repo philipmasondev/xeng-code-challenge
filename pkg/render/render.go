@@ -44,8 +44,7 @@ func Template(w http.ResponseWriter, r *http.Request, tmpl string, td *models.Te
 		// get the template cache from the app config
 		tc = app.TemplateCache
 	} else {
-		// this is just used for testing, so that we rebuild
-		// the cache on every request
+		// rebuild cache
 		tc, _ = CreateTemplateCache()
 	}
 

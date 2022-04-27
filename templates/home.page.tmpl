@@ -14,32 +14,28 @@
 </div><!-- END of header -->
 
 <!-- Line on page -->
-<div class="border"></div>
+<br>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-
-            
-            <div class="mt-5">By clicking the following button the recipies database will be updated with meal recipies from TheMealDB API.</div>
 
             <hr>
 
             <!-- Form -->
             <form action="/" method="POST" class="" novalidate>
-                
-                <input type="submit" class="btn btn-primary" value="Insert Json">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="url_of_api">URL of API</label>
+                        <input type="text" class="form-control" id="url_of_api" name="url_of_api" aria-describedby="urlhelp" >
+                        <small id="urlhelp" class="form-text text-muted">Please provide url</small>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary" value="Insert Json">Submit</button>
             </form>
 
-        </div>
-    </div>
-
-</div>
-{{$string := index .Data "post"}}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <p>Post data: {{$string}}</p>
         </div>
     </div>
 

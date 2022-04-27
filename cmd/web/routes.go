@@ -14,12 +14,13 @@ func routes(app *config.AppConfig) http.Handler {
 
 	mux.Use(middleware.Recoverer)
 	//mux.Use(NoSurf)
-	//mux.Use(SessionLoad)
+	mux.Use(SessionLoad)
 
 	mux.Get("/", handlers.Repo.Home)
 	mux.Get("/search", handlers.Repo.Search)
 
 	mux.Post("/", handlers.Repo.PostHome)
+	mux.Post("/search", handlers.Repo.Search)
 
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
