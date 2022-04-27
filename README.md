@@ -9,7 +9,7 @@ The purpose of this project is to provide baseline a skill proficiency. This pro
 -Have API calls to pull selective searches against that database. 
 
 ### Technologies
-*Golang
+* Golang
 * PostGres
 * Pandas
 * HTML
