@@ -93,6 +93,7 @@ func (m *postgresDBRepo) InsertRecipe(rec string) error {
 	if err != nil {
 		fmt.Errorf("Error at insert: %v", err)
 	}
+
 	return nil
 }
 
@@ -103,8 +104,6 @@ func (m *postgresDBRepo) GetAllAPI() string {
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	fmt.Println(rows)
 
 	var test []models.MealsSearch
 

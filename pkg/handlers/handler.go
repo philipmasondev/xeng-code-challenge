@@ -76,6 +76,8 @@ func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte(m.DB.GetAllAPI()))
 
+	render.Template(w, r, "search.page.tmpl", &models.TemplateData{})
+
 }
 
 // Search is the handler to serve the search page after POST
