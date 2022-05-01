@@ -74,9 +74,8 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 // PostSearch is the handler to serve the search page
 func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
-	render.Template(w, r, "search.page.tmpl", &models.TemplateData{
-		//
-	})
+	w.Write([]byte(m.DB.GetAllAPI()))
+
 }
 
 // Search is the handler to serve the search page after POST
@@ -91,7 +90,7 @@ func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
 func apiResponse(url string) string {
 	resp, err := http.Get(url)
 	if err != nil {
-		fmt.Println("Error at apiResponse. Error - ", err)
+		fmt.Errorf("apiResponse: %v", err)
 	}
 
 	text, err := ioutil.ReadAll(resp.Body)
