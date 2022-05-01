@@ -25,7 +25,7 @@ var errorLog *log.Logger
 func main() {
 	db, err := run()
 	if err != nil {
-		log.Fatal("Error at main, connecting to db.", err)
+		fmt.Errorf("run: failed to execute run in main: %w", err)
 	}
 	defer db.SQL.Close()
 
@@ -65,13 +65,13 @@ func run() (*driver.DB, error) {
 	db, err := driver.ConnectSQL("host=localhost port=5432 dbname=xeng-coding-challenge user=postgres password=" + DBPassword)
 
 	if err != nil {
-		log.Fatal("Cannot connect to database.")
+		fmt.Errorf("ConnectSQL: failed to connect to database. %v", err)
 	}
 	log.Println("Connected to database!")
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
-		log.Fatal("cannot create template cache")
+		fmt.Errorf("CreateTemplateCache: Can not create template cache. %v", err)
 		return nil, err
 	}
 

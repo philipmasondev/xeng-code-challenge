@@ -4,4 +4,5 @@ type DatabaseRepo interface {
 	AllUsers() bool
 
 	InsertRecipe(rec string) error
+	GetAllAPI() string
 }
