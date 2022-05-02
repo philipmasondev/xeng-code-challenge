@@ -36,9 +36,19 @@
                 <button type="submit" class="btn btn-primary" value="Insert Json">Submit</button>
             </form>
 
+
         </div>
     </div>
 
+</div>
+{{range .StringMap}}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <p>{{.}}</p>
+        </div>
+    </div>  
 </div>
 
 {{range .Data}}

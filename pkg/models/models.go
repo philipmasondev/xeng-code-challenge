@@ -56,15 +56,15 @@ type MealsJSONinsert struct {
 		StrImageSource              string `json:"strImageSource,omitempty"`
 		StrCreativeCommonsConfirmed string `json:"strCreativeCommonsConfirmed"`
 		DateModified                string `json:"dateModified"`
-	} `json:"meals,omitempty""`
+		DateCreated                 string `json:"dateCreated"`
+	} `json:"meals,omitempty"`
 }
 
 // model for searching db for api get reponse
 type MealsSearch struct {
-	ID                          int    `json:"id,omitempty"`
 	IDMeal                      string `json:"idMeal,omitempty"`
 	StrMeal                     string `json:"strMeal,omitempty"`
-	StrDrinkAlternate           string `json:"strDrinkAlternate,omitempty"`
+	StrDrinkAlternate           string `json:"strDrinkAlternate,"`
 	StrCategory                 string `json:"strCategory,omitempty"`
 	StrArea                     string `json:"strArea,omitempty"`
 	StrInstructions             string `json:"strInstructions,omitempty"`
@@ -115,4 +115,5 @@ type MealsSearch struct {
 	StrImageSource              string `json:"strImageSource,omitempty"`
 	StrCreativeCommonsConfirmed string `json:"strCreativeCommonsConfirmed"`
 	DateModified                string `json:"dateModified"`
+	DateCreated                 string `json:"dateCreated"`
 }

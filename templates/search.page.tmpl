@@ -25,28 +25,21 @@
 
             <hr>
 
-            <!-- Form -->
-            <form method="post" action="/" class="" novalidate>
-                <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
-                <button type="submit" class="btn btn-primary" value="Make Reservation">Update Database</button>
-            </form>
-
-        </div>
-    </div>
-
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <form action="/search" method="POST" class="" novalidate>
+            <!-- form -->
+            <form action="/search" method="get" class="" novalidate>
                 <input type="hidden" name="">
 
                 <div class="form-group mt-3">
-                    
+                    <label for="url_of_api">URL of API</label>
+                        <input type="text" class="form-control" id="url_of_api" name="url_of_api" aria-describedby="urlhelp" >
+                        <small id="urlhelp" class="form-text text-muted">Term to search for</small>
                 </div>
 
+                <br>
+                <button type="submit" class="btn btn-primary" value="Insert Json">Submit</button>
             </form>
+            <!-- end for form -->
+
         </div>
     </div>
 

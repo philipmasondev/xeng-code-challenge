@@ -5,4 +5,5 @@ type DatabaseRepo interface {
 
 	InsertRecipe(rec string) error
 	GetAllAPI() string
+	SearchAPI(string) string
 }

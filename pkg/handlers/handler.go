@@ -71,16 +71,25 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// PostSearch is the handler to serve the search page
+// Search is the handler to serve the search page
 func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte(m.DB.GetAllAPI()))
 
-	render.Template(w, r, "search.page.tmpl", &models.TemplateData{})
+	//data := make(map[string]string)
+	var strings = make(map[string]string)
+
+	searchString := r.FormValue("search_string")
+
+	strings["searchAPI"] = m.DB.SearchAPI(searchString)
+
+	render.Template(w, r, "search.page.tmpl", &models.TemplateData{
+		StringMap: strings,
+	})
 
 }
 
-// Search is the handler to serve the search page after POST
+// PostSearch is the handler to serve the search page after POST
 func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
 
 	render.Template(w, r, "search.page.tmpl", &models.TemplateData{
