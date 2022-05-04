@@ -177,3 +177,84 @@ func (m *postgresDBRepo) GetAllAPI() string {
 
 	return (string(recipeByte))
 }
+
+// GetAllAPI gets all records from db
+func (m *postgresDBRepo) Get() string {
+
+	rows, err := m.DB.Query("SELECT * FROM recipesnonjson")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var test []models.MealsSearch
+
+	for rows.Next() {
+		recipe := models.MealsSearch{}
+
+		err := rows.Scan(
+			&recipe.ID,
+			&recipe.IDMeal,
+			&recipe.StrMeal,
+			&recipe.StrDrinkAlternate,
+			&recipe.StrCategory,
+			&recipe.StrArea,
+			&recipe.StrInstructions,
+			&recipe.StrMealThumb,
+			&recipe.StrTags,
+			&recipe.StrYoutube,
+			&recipe.StrIngredient1,
+			&recipe.StrIngredient2,
+			&recipe.StrIngredient3,
+			&recipe.StrIngredient4,
+			&recipe.StrIngredient5,
+			&recipe.StrIngredient6,
+			&recipe.StrIngredient7,
+			&recipe.StrIngredient8,
+			&recipe.StrIngredient9,
+			&recipe.StrIngredient10,
+			&recipe.StrIngredient11,
+			&recipe.StrIngredient12,
+			&recipe.StrIngredient13,
+			&recipe.StrIngredient14,
+			&recipe.StrIngredient15,
+			&recipe.StrIngredient16,
+			&recipe.StrIngredient17,
+			&recipe.StrIngredient18,
+			&recipe.StrIngredient19,
+			&recipe.StrIngredient20,
+			&recipe.StrMeasure1,
+			&recipe.StrMeasure2,
+			&recipe.StrMeasure3,
+			&recipe.StrMeasure4,
+			&recipe.StrMeasure5,
+			&recipe.StrMeasure6,
+			&recipe.StrMeasure7,
+			&recipe.StrMeasure8,
+			&recipe.StrMeasure9,
+			&recipe.StrMeasure10,
+			&recipe.StrMeasure11,
+			&recipe.StrMeasure12,
+			&recipe.StrMeasure13,
+			&recipe.StrMeasure14,
+			&recipe.StrMeasure15,
+			&recipe.StrMeasure16,
+			&recipe.StrMeasure17,
+			&recipe.StrMeasure18,
+			&recipe.StrMeasure19,
+			&recipe.StrMeasure20,
+			&recipe.StrSource,
+			&recipe.StrImageSource,
+			&recipe.StrCreativeCommonsConfirmed,
+			&recipe.DateModified,
+		)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		test = append(test, recipe)
+
+	}
+	recipeByte, _ := json.MarshalIndent(test, "", "\t")
+
+	return (string(recipeByte))
+}
