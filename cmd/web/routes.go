@@ -16,11 +16,17 @@ func routes(app *config.AppConfig) http.Handler {
 	//mux.Use(NoSurf)
 	mux.Use(SessionLoad)
 
-	mux.Get("/", handlers.Repo.Home)
-	mux.Get("/search", handlers.Repo.Search)
+	mux.Get("/", handlers.Repo.Home)         // home page. This has a field to take a url and update db with the response
+	mux.Get("/list", handlers.Repo.List)     // returns all records in db as json
+	mux.Get("/search", handlers.Repo.Search) // serves the search page
 
-	mux.Post("/", handlers.Repo.PostHome)
-	mux.Post("/search", handlers.Repo.Search)
+	mux.Post("/", handlers.Repo.PostHome) // processes post of home page when url is provided and submit button is clicked.
+
+	// sub router
+	mux.Route("/{id}", func(mux chi.Router) {
+
+		mux.Get("/", handlers.Repo.Get) // GET /search/{name} - return json of recipe by name.
+	})
 
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
