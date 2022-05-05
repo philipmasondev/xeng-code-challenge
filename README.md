@@ -11,7 +11,7 @@ The purpose of this project is to provide baseline a skill proficiency. This pro
 ### Technologies
 * Golang
 * PostGres
-* chi - go-chi/chi
+* chi - https://github.com/go-chi/chi
 * HTML
 * Bootstrap
 
