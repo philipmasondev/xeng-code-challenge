@@ -99,11 +99,11 @@ func apiResponse(url string) string {
 // Get is the handler to serve the search page
 func (m *Repository) Get(w http.ResponseWriter, r *http.Request) {
 
-	names := r.URL.Query().Get("name")
-	if len(names) < 1 {
-		w.Write([]byte("URL key for 'name' is missing"))
+	ingredients := r.URL.Query().Get("ingredient")
+	if len(ingredients) < 1 {
+		w.Write([]byte("URL key for 'ingredient' is missing"))
 		return
 	}
 
-	w.Write([]byte(m.DB.Get(names)))
+	w.Write([]byte(m.DB.Get(ingredients)))
 }
