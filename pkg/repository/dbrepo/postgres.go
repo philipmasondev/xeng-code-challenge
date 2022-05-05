@@ -181,7 +181,7 @@ func (m *postgresDBRepo) GetAllAPI() string {
 // GetAllAPI gets all records from db
 func (m *postgresDBRepo) Get(term string) string {
 
-	rows, err := m.DB.Query("SELECT * FROM recipesnonjson WHERE meal = $1", term)
+	rows, err := m.DB.Query("SELECT * FROM recipesnonjson WHERE meal ~* $1", term)
 	if err != nil {
 		fmt.Println("Error at postges get: ", err)
 	}
