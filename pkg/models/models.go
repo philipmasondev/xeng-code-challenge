@@ -5,7 +5,7 @@ type MealsJSONinsert struct {
 	Meals []struct {
 		IDMeal                      string `json:"idMeal,omitempty"`
 		StrMeal                     string `json:"strMeal,omitempty"`
-		StrDrinkAlternate           string `json:"strDrinkAlternate,omitempty"`
+		StrDrinkAlternate           string `json:"strDrinkAlternate"`
 		StrCategory                 string `json:"strCategory,omitempty"`
 		StrArea                     string `json:"strArea,omitempty"`
 		StrInstructions             string `json:"strInstructions,omitempty"`
@@ -55,16 +55,16 @@ type MealsJSONinsert struct {
 		StrSource                   string `json:"strSource,omitempty"`
 		StrImageSource              string `json:"strImageSource,omitempty"`
 		StrCreativeCommonsConfirmed string `json:"strCreativeCommonsConfirmed"`
+		DateCreated                 string `json:"dateCreated"`
 		DateModified                string `json:"dateModified"`
-	} `json:"meals,omitempty""`
+	} `json:"meals,omitempty"`
 }
 
 // model for searching db for api get reponse
 type MealsSearch struct {
-	ID                          int    `json:"id,omitempty"`
 	IDMeal                      string `json:"idMeal,omitempty"`
 	StrMeal                     string `json:"strMeal,omitempty"`
-	StrDrinkAlternate           string `json:"strDrinkAlternate,omitempty"`
+	StrDrinkAlternate           string `json:"strDrinkAlternate"`
 	StrCategory                 string `json:"strCategory,omitempty"`
 	StrArea                     string `json:"strArea,omitempty"`
 	StrInstructions             string `json:"strInstructions,omitempty"`
@@ -114,5 +114,6 @@ type MealsSearch struct {
 	StrSource                   string `json:"strSource,omitempty"`
 	StrImageSource              string `json:"strImageSource,omitempty"`
 	StrCreativeCommonsConfirmed string `json:"strCreativeCommonsConfirmed"`
+	DateCreated                 string `json:"dateCreated"`
 	DateModified                string `json:"dateModified"`
 }

@@ -25,6 +25,7 @@ The purpose of this project is to provide baseline a skill proficiency. This pro
 
 1.	Home page provides a button to pull data from API and store this into persistence PostGres Database. 
 a.	Future update to this is planned to have user authentication so that only authenticated users can perform API calls. 
-2.	/search returns all records via API.  
-3.	/search/<recpie_name> will return recipe by name.
+2.	/list returns all records via API.  
+3.	/search/?ingredient= returns recipes with ther search term.
+    a. http://localhost:8080/search/?ingredient=butter
     
