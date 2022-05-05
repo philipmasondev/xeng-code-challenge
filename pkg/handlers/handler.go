@@ -63,8 +63,6 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 
 	urlString := apiResponse(apiJsonString)
 
-	fmt.Println(apiJsonString)
-
 	if json.Valid([]byte(urlString)) {
 		errInsert := m.DB.InsertRecipe(urlString)
 		if errInsert != nil {
