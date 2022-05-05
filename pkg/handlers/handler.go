@@ -42,6 +42,12 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	render.Template(w, r, "home.page.tmpl", &models.TemplateData{})
 }
 
+// Home is the handler for the home page
+func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
+
+	render.Template(w, r, "search.page.tmpl", &models.TemplateData{})
+}
+
 // PostHome is the handler for the home page
 func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 
@@ -72,11 +78,9 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 }
 
 // PostSearch is the handler to serve the search page
-func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
+func (m *Repository) List(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte(m.DB.GetAllAPI()))
-
-	render.Template(w, r, "search.page.tmpl", &models.TemplateData{})
 
 }
 
@@ -97,8 +101,11 @@ func apiResponse(url string) string {
 // Get is the handler to serve the search page
 func (m *Repository) Get(w http.ResponseWriter, r *http.Request) {
 
-	//name := r.Context().Value("name").(string)
+	names := r.URL.Query().Get("name")
+	if len(names) < 1 {
+		w.Write([]byte("URL key for 'name' is missing"))
+		return
+	}
 
-	render.Template(w, r, "search.page.tmpl", &models.TemplateData{})
-
+	w.Write([]byte(m.DB.Get(names)))
 }

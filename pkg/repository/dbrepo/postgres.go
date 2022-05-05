@@ -105,7 +105,7 @@ func (m *postgresDBRepo) GetAllAPI() string {
 		fmt.Println(err)
 	}
 
-	var test []models.MealsSearch
+	var tmpModel []models.MealsSearch
 
 	for rows.Next() {
 		recipe := models.MealsSearch{}
@@ -170,23 +170,23 @@ func (m *postgresDBRepo) GetAllAPI() string {
 			fmt.Println(err)
 		}
 
-		test = append(test, recipe)
+		tmpModel = append(tmpModel, recipe)
 
 	}
-	recipeByte, _ := json.MarshalIndent(test, "", "\t")
+	recipeByte, _ := json.MarshalIndent(tmpModel, "", "\t")
 
-	return (string(recipeByte))
+	return string(recipeByte)
 }
 
 // GetAllAPI gets all records from db
-func (m *postgresDBRepo) Get() string {
+func (m *postgresDBRepo) Get(term string) string {
 
-	rows, err := m.DB.Query("SELECT * FROM recipesnonjson")
+	rows, err := m.DB.Query("SELECT * FROM recipesnonjson WHERE meal = $1", term)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error at postges get: ", err)
 	}
 
-	var test []models.MealsSearch
+	var tmpModel []models.MealsSearch
 
 	for rows.Next() {
 		recipe := models.MealsSearch{}
@@ -251,10 +251,17 @@ func (m *postgresDBRepo) Get() string {
 			fmt.Println(err)
 		}
 
-		test = append(test, recipe)
+		tmpModel = append(tmpModel, recipe)
 
 	}
-	recipeByte, _ := json.MarshalIndent(test, "", "\t")
 
-	return (string(recipeByte))
+	var recipeByte []byte
+
+	if len(tmpModel) < 1 {
+		return "No recipe found."
+	} else {
+		recipeByte, _ = json.MarshalIndent(tmpModel, "", "\t")
+	}
+
+	return string(recipeByte)
 }

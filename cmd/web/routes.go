@@ -17,7 +17,8 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Use(SessionLoad)
 
 	mux.Get("/", handlers.Repo.Home)         // home page. This has a field to take a url and update db with the response
-	mux.Get("/search", handlers.Repo.Search) // returns all records in db as json
+	mux.Get("/list", handlers.Repo.List)     // returns all records in db as json
+	mux.Get("/search", handlers.Repo.Search) // serves the search page
 
 	mux.Post("/", handlers.Repo.PostHome) // processes post of home page when url is provided and submit button is clicked.
 
