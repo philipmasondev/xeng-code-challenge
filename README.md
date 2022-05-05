@@ -11,7 +11,7 @@ The purpose of this project is to provide baseline a skill proficiency. This pro
 ### Technologies
 * Golang
 * PostGres
-* Pandas
+* Chi - https://github.com/go-chi/chi
 * HTML
 * Bootstrap
 
@@ -27,5 +27,5 @@ The purpose of this project is to provide baseline a skill proficiency. This pro
 a.	Future update to this is planned to have user authentication so that only authenticated users can perform API calls. 
 2.	/list returns all records via API.  
 3.	/search/?ingredient= returns recipes with ther search term.
-    a. http://localhost:8080/search/?ingredient=butter
+    - http://localhost:8080/search/?ingredient=butter
     
