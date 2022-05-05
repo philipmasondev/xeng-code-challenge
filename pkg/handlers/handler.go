@@ -54,20 +54,23 @@ func (m *Repository) PostHome(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 
 	apiJsonString := r.FormValue("url_of_api")
-
-	// check url format and if http:// is missing, add http:// to beginning
-	_, err := url.ParseRequestURI(apiJsonString)
-	if err != nil {
-		apiJsonString = "http://" + apiJsonString
-	}
-
-	urlString := apiResponse(apiJsonString)
-
-	if json.Valid([]byte(urlString)) {
-		errInsert := m.DB.InsertRecipe(urlString)
-		if errInsert != nil {
-			fmt.Println("Error at InsertRecipe with ", errInsert)
+	if len(apiJsonString) > 0 {
+		// check url format and if http:// is missing, add http:// to beginning
+		_, err := url.ParseRequestURI(apiJsonString)
+		if err != nil {
+			apiJsonString = "http://" + apiJsonString
 		}
+
+		urlString := apiResponse(apiJsonString)
+
+		if json.Valid([]byte(urlString)) {
+			errInsert := m.DB.InsertRecipe(urlString)
+			if errInsert != nil {
+				fmt.Println("Error at InsertRecipe with ", errInsert)
+			}
+		}
+	} else {
+		data["no_url"] = "No url provided"
 	}
 
 	render.Template(w, r, "home.page.tmpl", &models.TemplateData{

@@ -84,6 +84,3 @@ func run() (*driver.DB, error) {
 
 	return db, nil
 }
-
-//made a change
-//made a second change

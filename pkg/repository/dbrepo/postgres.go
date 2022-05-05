@@ -11,15 +11,6 @@ func (m *postgresDBRepo) AllUsers() bool {
 	return true
 }
 
-/**********************************************************************************************
-	TODO:
-	www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast
-
-	This API response does not fit into the current format for the table. Need to expand the
-	ability for updating table with multiple objectes in JSON string.
-
-**********************************************************************************************/
-
 // InsertRecipe will update recipesNonJson table
 func (m *postgresDBRepo) InsertRecipe(rec string) error {
 
